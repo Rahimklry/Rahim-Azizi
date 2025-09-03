@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modern 2025 Website Design</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e7ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1200px;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(12px);
+      background: rgba(255 255 255 / 0.05);
+      border-radius: 15px;
+      box-shadow:
+        0 4px 6px rgb(0 0 0 / 0.5),
+        inset 0 0 0 1px rgb(255 255 255 / 0.1);
+      margin-bottom: 3rem;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1.4px;
+      color: #a5b4fc;
+      text-shadow: 0 0 8px #6366f1;
+    }
+
+    nav a {
+      color: #c7d2fe;
+      margin-left: 1.8rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #818cf8;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    nav a:hover {
+      color: #a5b4fc;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* Hero with glass effect */
+    .hero {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      backdrop-filter: blur(15px);
+      box-shadow:
+        0 8px 32px rgb(0 0 0 / 0.3);
+      text-align: center;
+      color: #e0e7ff;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #c7d2fe;
+      text-shadow: 0 0 10px #818cf8;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: 0 auto 2rem auto;
+      color: #d1d5db;
+    }
+
+    .hero button {
+      background: linear-gradient(135deg, #6366f1, #4338ca);
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 1.2rem 3rem;
+      border-radius: 9999px;
+      box-shadow:
+        4px 4px 10px rgb(67 56 202 / 0.5),
+        inset -4px -4px 10px rgb(99 102 241 / 0.7);
+      cursor: pointer;
+      transition: all 0.4s ease;
+      user-select: none;
+    }
+    .hero button:hover {
+      background: linear-gradient(135deg, #4338ca, #6366f1);
+      box-shadow:
+        6px 6px 15px rgb(99 102 241 / 0.7),
+        inset -6px -6px 15px rgb(67 56 202 / 0.8);
+      transform: scale(1.05);
+    }
+
+    /* Card Grid with neumorphism */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: #203a43;
+      border-radius: 25px;
+      box-shadow:
+        8px 8px 15px #172a34,
+        -8px -8px 15px #2d505d;
+      color: #c7d2fe;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow:
+        10px 10px 20px #12202a,
+        -10px -10px 20px #3c6a85;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+    }
+    .card:hover img {
+      filter: brightness(1);
+    }
+
+    .card-content {
+      padding: 1.6rem 2rem 2rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: #a5b4fc;
+      text-shadow: 0 0 8px #818cf8;
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #d1d5db;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 1200px;
+      padding: 1rem 2rem;
+      margin-top: 4rem;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      text-align: center;
+      user-select: none;
+    }
+    footer a {
+      color: #818cf8;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #a5b4fc;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      nav a {
+        margin-left: 1rem;
+        font-size: 1rem;
+      }
+      main {
+        padding: 0 1rem;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .hero button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Neumorphic UI</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <h2>Future of Web Design in 2025</h2>
+      <p>Experience the perfect blend of glassmorphism and neumorphism with smooth animations and vibrant colors.</p>
+      <button>Explore Now</button>
+    </section>
+
+    <section class="card-grid" id="features">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Mountains" />
+        <div class="card-content">
+          <h3>Majestic Mountains</h3>
+          <p>Explore breathtaking mountain landscapes and embrace the adventure.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Forest" />
+        <div class="card-content">
+          <h3>Serene Forest</h3>
+          <p>Discover peaceful forests filled with vibrant flora and fauna.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80" alt="Beach" />
+        <div class="card-content">
+          <h3>Sunny Beaches</h3>
+          <p>Relax on golden sandy beaches with crystal clear blue water.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Neumorphic UI &nbsp;|&nbsp;
+    <a href="#" aria-label="Twitter">Twitter</a> | 
+    <a href="#" aria-label="Instagram">Instagram</a> | 
+    <a href="#" aria-label="GitHub">GitHub</a>
+  </footer>
+
+</body>
+</html>
