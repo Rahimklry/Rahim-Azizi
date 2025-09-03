@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARA Logistics | Smart Freight & Supply Chain Solutions</title>
+  <meta name="description" content="ARA Logistics delivers fast, reliable logistics: road, air, sea freight, warehousing, and last‑mile across Europe and beyond." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #0ea5e9;          /* sky-500 */
+      --brand-600: #0284c7;      /* sky-600 */
+      --ink: #0f172a;            /* slate-900 */
+      --muted: #475569;          /* slate-600 */
+      --soft: #f1f5f9;           /* slate-100 */
+      --card: #ffffff;           /* white */
+      --ring: rgba(14,165,233,.35);
+      --success: #16a34a;
+      --warning: #f59e0b;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg,#ffffff 0%, #f8fafc 100%);
+      line-height: 1.6;
+    }
+
+    /* Utility */
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    .btn {
+      display: inline-block; padding: 12px 18px; border-radius: 14px; font-weight: 600; text-decoration: none;
+      background: var(--brand); color: white; box-shadow: 0 8px 20px rgba(2,132,199,.25);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: var(--brand-600); box-shadow: 0 10px 22px rgba(2,132,199,.30); }
+    .btn-outline { background: #fff; color: var(--brand-600); border: 2px solid var(--brand-600); box-shadow: none; }
+    .btn-outline:hover { background: var(--brand-600); color: #fff; }
+    section { padding: 72px 0; }
+    .pill { font-size: 12px; letter-spacing:.08em; text-transform: uppercase; font-weight: 700; color: var(--brand-600); background: rgba(14,165,233,.08); padding: 8px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 8px; }
+    .grid { display: grid; gap: 22px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 40; backdrop-filter: saturate(180%) blur(6px);
+      background: rgba(255,255,255,.8); border-bottom: 1px solid rgba(2,132,199,.08);
+    }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+    .brand .logo { width:40px; height:40px; border-radius:12px; background: radial-gradient(120% 120% at 0% 0%, var(--brand) 0%, var(--brand-600) 65%, #0c4a6e 100%); display:grid; place-items:center; box-shadow: inset 0 0 0 4px rgba(255,255,255,.35); }
+    .brand svg { width:22px; height:22px; fill:#fff; }
+    .brand .name { font-weight:800; letter-spacing:.2px; }
+    .nav ul { list-style:none; display:flex; gap:18px; padding:0; margin:0; }
+    .nav a { text-decoration:none; color:#0f172a; font-weight:600; opacity:.85; }
+    .nav a:hover { opacity:1; color: var(--brand-600); }
+
+    /* Hero */
+    .hero { padding: 96px 0 72px; }
+    .hero .wrap { display:grid; gap:32px; grid-template-columns: 1.1fr .9fr; align-items:center; }
+    .hero h1 { font-size: clamp(28px, 5vw, 56px); line-height: 1.1; margin: 8px 0 14px; }
+    .hero p { font-size: clamp(16px, 2.5vw, 18px); color: var(--muted); }
+    .hero .cta { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top: 14px; }
+    .hero-card { background: linear-gradient(180deg,#ffffff 0%, #f1f5f9 100%); border: 1px solid rgba(2,132,199,.15); border-radius: 22px; padding: 18px; box-shadow: 0 20px 40px rgba(2,132,199,.08); }
+
+    .hero-kpis { display:grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 12px; }
+    .kpi { background: #fff; border:1px solid rgba(2,132,199,.12); border-radius: 16px; padding: 14px; text-align:center; }
+    .kpi b { font-size: 22px; display:block; }
+    .kpi span { font-size: 12px; color: var(--muted); }
+
+    /* Cards */
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .card { background: var(--card); border:1px solid rgba(2,132,199,.12); border-radius: 18px; padding: 22px; transition: transform .15s ease, box-shadow .15s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(2,132,199,.12); }
+    .card h3 { margin: 8px 0 6px; }
+    .card p { color: var(--muted); }
+    .icon { width: 36px; height: 36px; border-radius: 12px; display:grid; place-items:center; background: rgba(14,165,233,.1); }
+    .icon svg { width:20px; height:20px; fill: var(--brand-600); }
+
+    /* Track */
+    .track { background: linear-gradient(180deg,#e0f2fe 0%, #fff 100%); border-top: 1px solid rgba(2,132,199,.18); border-bottom: 1px solid rgba(2,132,199,.18); }
+    .track form { display:flex; gap:10px; flex-wrap:wrap; }
+    input[type="text"], input[type="email"], textarea, select {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border:1.5px solid rgba(2,132,199,.25); outline: none; font: inherit;
+      transition: box-shadow .15s ease, border-color .15s ease;
+      background:#fff;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--brand-600); box-shadow: 0 0 0 4px var(--ring); }
+
+    /* Industries */
+    .chips { display:flex; gap:8px; flex-wrap:wrap; }
+    .chip { padding:8px 10px; background:#fff; border:1px solid rgba(2,132,199,.15); border-radius:999px; font-weight:600; font-size:13px; }
+
+    /* Testimonials */
+    .testimonials { background: linear-gradient(180deg,#fff 0%, #f8fafc 100%); }
+    .quote { background:#fff; border:1px solid rgba(2,132,199,.12); border-radius:18px; padding:18px; }
+    .quote p { margin:0; color: var(--muted); }
+
+    /* Contact */
+    .contact .grid { grid-template-columns: 1.2fr .8fr; }
+    .contact .panel { background:#fff; border:1px solid rgba(2,132,199,.12); border-radius:20px; padding:22px; }
+
+    /* Footer */
+    footer { background:#0b1220; color:#e2e8f0; padding: 36px 0; }
+    footer a { color:#cbd5e1; text-decoration:none; }
+    footer a:hover { color:#fff; }
+    .footer-grid { display:grid; grid-template-columns: 1.2fr .8fr .8fr; gap:22px; }
+    .copyright { border-top:1px solid rgba(255,255,255,.08); margin-top:22px; padding-top:16px; color:#94a3b8; font-size:14px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .contact .grid, .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav ul { display:none; }
+      .cards { grid-template-columns: 1fr; }
+      .hero { padding-top: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true">
+          <!-- Truck glyph -->
+          <svg viewBox="0 0 24 24" role="img" aria-label="ARA Logistics logo">
+            <path d="M3 7h11v7h2.5l1.5-3h2v6h-1a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0H2V9a2 2 0 0 1 1-2Zm16 7v-2h-1.2l-.9 2h2.1ZM6 18a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/>
+          </svg>
+        </div>
+        <span class="name">ARA Logistics</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#track">Track</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="pill">ara-logistics.com</span>
+        <h1>Smart, on‑time logistics for a moving world.</h1>
+        <p>ARA Logistics keeps your supply chain in flow—road, air, and sea. Real‑time tracking, customs support, and warehousing across Europe and beyond.</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Get a Quote</a>
+          <a class="btn btn-outline" href="#track">Track Shipment</a>
+        </div>
+        <div class="hero-kpis">
+          <div class="kpi"><b>1,200+</b><span>Active clients</span></div>
+          <div class="kpi"><b>48h avg</b><span>EU door‑to‑door</span></div>
+          <div class="kpi"><b>99.3%</b><span>On‑time delivery</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1519999482648-25049ddd37b1?q=80&w=1470&auto=format&fit=crop" alt="Blue ARA Logistics truck on a highway" style="width:100%; height:auto; border-radius:16px;">
+          <p style="font-size:13px; color:var(--muted); margin:8px 4px 0;">From first mile to last—integrated freight that scales with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <span class="pill">What we do</span>
+      <h2 style="margin:10px 0 6px; font-size: clamp(22px, 3.6vw, 36px);">End‑to‑end logistics services</h2>
+      <p style="color:var(--muted); max-width:64ch;">Flexible solutions tailored to your industry: from express road freight to global ocean and air, plus bonded warehousing and value‑added services.</p>
+
+      <div class="grid cards" style="margin-top:18px;">
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 7h11v7h2.5l1.5-3h2v6h-1a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0H2V9a2 2 0 0 1 1-2Z"/></svg>
+          </div>
+          <h3>Road Freight</h3>
+          <p>FTL/LTL across EU & UK, temperature‑controlled and hazardous goods options, digital POD.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 16v2H3v-2h18ZM4 8l8-5 8 5v6H4V8Z"/></svg>
+          </div>
+          <h3>Air Freight</h3>
+          <p>Time‑critical air solutions with customs clearance and last‑mile delivery coordination.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M2 19h20v2H2v-2Zm2-9h16v7H4v-7Zm2-6h12v4H6V4Z"/></svg>
+          </div>
+          <h3>Ocean Freight</h3>
+          <p>FCL/LCL with flexible sailings, port handling, and door‑to‑door coverage.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 4h18v2H3V4Zm0 4h18v10H3V8Zm4 2v6h2v-6H7Zm4 0v6h2v-6h-2Zm4 0v6h2v-6h-2Z"/></svg>
+          </div>
+          <h3>Warehousing</h3>
+          <p>Bonded storage, cross‑docking, pick & pack, and inventory management.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7Zm0 9.5A2.5 2.5 0 1 0 12 6a2.5 2.5 0 0 0 0 5Z"/></svg>
+          </div>
+          <h3>Customs & Compliance</h3>
+          <p>Import/export docs, AEO processes, and regulatory consulting to keep cargos moving.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3l9 4v4c0 5-4 9-9 10C7 20 3 16 3 11V7l9-4Z"/></svg>
+          </div>
+          <h3>Last‑Mile & Express</h3>
+          <p>Same‑day and next‑day delivery with live ETA and photo proof of delivery.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Track -->
+  <section id="track" class="track" aria-labelledby="track-heading">
+    <div class="container">
+      <span class="pill">Track</span>
+      <h2 id="track-heading" style="margin:10px 0 6px; font-size: clamp(22px, 3.6vw, 34px);">Track your shipment</h2>
+      <p style="color:var(--muted); max-width:60ch;">Enter your shipment ID to view the latest status. (Demo form—connect to your tracking system.)</p>
+      <form onsubmit="event.preventDefault(); const id=this.elements.id.value.trim(); alert(id? ('Tracking '+id+'... (demo)'):'Please enter a shipment ID');">
+        <input aria-label="Shipment ID" type="text" name="id" placeholder="e.g. ARA-7842-DE" required style="flex:1 1 280px">
+        <button class="btn" type="submit">Track Now</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section id="industries">
+    <div class="container">
+      <span class="pill">Industries</span>
+      <h2 style="margin:10px 0 6px; font-size: clamp(22px, 3.6vw, 34px);">Built for your sector</h2>
+      <p style="color:var(--muted); max-width:64ch;">Special handling and SLAs for high‑value and regulated supply chains.</p>
+      <div class="chips" style="margin-top:12px;">
+        <div class="chip">Automotive</div>
+        <div class="chip">E‑commerce</div>
+        <div class="chip">Pharma & Healthcare</div>
+        <div class="chip">Aerospace</div>
+        <div class="chip">Industrial</div>
+        <div class="chip">Retail & Fashion</div>
+        <div class="chip">Food & Beverage</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <span class="pill">What clients say</span>
+      <h2 style="margin:10px 0 6px; font-size: clamp(22px, 3.6vw, 34px);">Trusted by growing brands</h2>
+      <div class="grid" style="grid-template-columns:1fr 1fr;">
+        <div class="quote"><p>“ARA Logistics scaled our EU distribution without missing a beat. On‑time rates and communication are top‑tier.”</p><p style="margin-top:8px; font-weight:600;">Nadia F. — E‑commerce Ops</p></div>
+        <div class="quote"><p>“Customs is no longer a bottleneck. Their team handles clearances and keeps our inventory moving.”</p><p style="margin-top:8px; font-weight:600;">Jonas R. — Automotive</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <span class="pill">Contact</span>
+      <h2 style="margin:10px 0 6px; font-size: clamp(22px, 3.6vw, 34px);">Request a quote</h2>
+      <div class="grid">
+        <div class="panel">
+          <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch. (demo)')">
+            <div class="grid" style="grid-template-columns:1fr 1fr;">
+              <div>
+                <label for="name" style="font-weight:600;">Full name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required>
+              </div>
+              <div>
+                <label for="email" style="font-weight:600;">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@company.com" required>
+              </div>
+            </div>
+            <div class="grid" style="grid-template-columns:1fr 1fr; margin-top:10px;">
+              <div>
+                <label for="mode" style="font-weight:600;">Mode</label>
+                <select id="mode" name="mode">
+                  <option>Road</option>
+                  <option>Air</option>
+                  <option>Ocean</option>
+                  <option>Warehousing</option>
+                </select>
+              </div>
+              <div>
+                <label for="from" style="font-weight:600;">From → To</label>
+                <input id="from" name="from" type="text" placeholder="Berlin → Paris" required>
+              </div>
+            </div>
+            <div style="margin-top:10px;">
+              <label for="details" style="font-weight:600;">Cargo details</label>
+              <textarea id="details" name="details" rows="4" placeholder="Weight/volume, pallets, INCOTERMS, special handling…"></textarea>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; margin-top:14px;">
+              <button class="btn" type="submit">Send Request</button>
+              <span style="font-size:12px; color:var(--muted);">We respond within one business day.</span>
+            </div>
+          </form>
+        </div>
+        <div>
+          <div class="panel">
+            <h3 style="margin-top:0">ARA Logistics</h3>
+            <p style="color:var(--muted);">Reliable freight and supply chain partner.</p>
+            <p>
+              <strong>HQ:</strong> Berlin, Germany<br>
+              <strong>Phone:</strong> +49 30 0000 0000<br>
+              <strong>Email:</strong> <a href="mailto:hello@ara-logistics.com">hello@ara-logistics.com</a>
+            </p>
+            <p style="display:flex; gap:10px;">
+              <a class="chip" href="#" aria-label="LinkedIn">LinkedIn</a>
+              <a class="chip" href="#" aria-label="X / Twitter">X</a>
+              <a class="chip" href="#" aria-label="Facebook">Facebook</a>
+            </p>
+            <hr style="border:none; border-top:1px solid rgba(2,132,199,.12); margin:16px 0;">
+            <p style="font-size:14px; color:var(--muted);">
+              VAT / USt‑IdNr.: DE000000000<br>
+              EORI: DE0000000000
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <div class="logo" aria-hidden="true" style="width:32px; height:32px;">
+            <svg viewBox="0 0 24 24"><path fill="#fff" d="M3 7h11v7h2.5l1.5-3h2v6h-1a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0H2V9a2 2 0 0 1 1-2Z"/></svg>
+          </div>
+          <strong>ARA Logistics</strong>
+        </div>
+        <p style="color:#cbd5e1; max-width:60ch;">We simplify logistics with technology and care. From planning to delivery, your cargo is in safe hands.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul style="list-style:none; padding:0; margin:8px 0 0; line-height:2;">
+          <li><a href="#services">Road Freight</a></li>
+          <li><a href="#services">Air Freight</a></li>
+          <li><a href="#services">Ocean Freight</a></li>
+          <li><a href="#services">Warehousing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul style="list-style:none; padding:0; margin:8px 0 0; line-height:2;">
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Imprint</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> ARA Logistics — ara-logistics.com. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
